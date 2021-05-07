@@ -1,0 +1,22 @@
+name: forksync
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fork Sync
+        uses: tgymnich/fork-sync@v1.2.1
+        with:
+          # Owner of the forked repository
+          owner: Dimbreath
+          # Token for the github API
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Branch to track
+          head: master
+          # Branch to keep updated
+          base: master
